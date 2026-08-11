@@ -1,4 +1,7 @@
 #include <stdio.h>   // для sprintf и puts
-int main() {
+
+    
+
+int main() {  
     return 0;
 }
