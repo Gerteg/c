@@ -6,7 +6,7 @@
 #define Pi  3.1415926535
 int main() {  
 
-    float adc_buf[ADC_BUF_SIZE];                                  // буфер входный значений
+    float adc_buf[ADC_BUF_SIZE];                                    // буфер входный значений
     float Sum_Re, Sum_Im;                                           // действительная и мнимая часть суммы произведений гарм. функции на буфер АЦП
     float Xk_Re[ADC_BUF_SIZE], Xk_Im[ADC_BUF_SIZE];                 // действительная и мнимая части спектра
     float Abs[ADC_BUF_SIZE];                                        // буфер для хранения результата модуля спектра
@@ -27,9 +27,9 @@ int main() {
         Sum_Re = 0;
         Sum_Im = 0;
     }
-
+    printf("k\tRe[k]\tIm[k]\tABS[k]\n");
     for (int k = 0; k < ADC_BUF_SIZE; k++)  {                       // вывод результатов
-        printf("k\t%i\tCOMPLEX_SPECTRE[k]\t%.5f+%.5fi\tABS_SPECTRE[k]\t%.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]);
+        printf("%i\t%.5f\t%.5f\t%.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]);
     }
 
     return 0;
