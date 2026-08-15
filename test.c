@@ -10,16 +10,18 @@ int main() {
     float Sum_Re, Sum_Im;                                           // действительная и мнимая часть суммы произведений гарм. функции на буфер АЦП
     float Xk_Re[ADC_BUF_SIZE], Xk_Im[ADC_BUF_SIZE];                 // действительная и мнимая части спектра
     float Abs[ADC_BUF_SIZE];                                        // буфер для хранения результата модуля спектра
-    
-    
-    for(int i = 0; i < ADC_BUF_SIZE; i++)   {
-        adc_buf[i] = sin(2*Pi*i*2/ADC_BUF_SIZE)+sin(2*Pi*i*10/ADC_BUF_SIZE)+sin(2*Pi*i*20/ADC_BUF_SIZE);     // запись тестовой функции для построения спектра
+
+    for(int i = 0; i < ADC_BUF_SIZE; i++)   {                       // запись тестовой функции для построения спектра
+        adc_buf[i] = 
+        sinf(2*Pi*i* 1  /ADC_BUF_SIZE + 45)+
+        sinf(2*Pi*i* 5  /ADC_BUF_SIZE + 30)+
+        sinf(2*Pi*i* 50 /ADC_BUF_SIZE + 128);     
     }
 
     for (int k = 0; k < ADC_BUF_SIZE; k++)  {                       // расчет спектра ДПФ двойным циклом
         for (int n = 0; n < ADC_BUF_SIZE; n++)  {
-            Sum_Re += adc_buf[n]*cos(2*Pi*k*n/ADC_BUF_SIZE);        // рассчет суммы действительной части всех отсчетов для данного k
-            Sum_Im += adc_buf[n]*sin(2*Pi*k*n/ADC_BUF_SIZE);        // рассчет суммы мнимой части всех отсчетов для данного k
+            Sum_Re += adc_buf[n]*cosf(2*Pi*k*n/ADC_BUF_SIZE);       // рассчет суммы действительной части всех отсчетов для данного k
+            Sum_Im += adc_buf[n]*sinf(2*Pi*k*n/ADC_BUF_SIZE);       // рассчет суммы мнимой части всех отсчетов для данного k
         }
         Xk_Re[k] = Sum_Re;                                          // запись действительной части спектра в буфер
         Xk_Im[k] = Sum_Im;                                          // запись мнимой части спектра в буфер
@@ -27,10 +29,23 @@ int main() {
         Sum_Re = 0;
         Sum_Im = 0;
     }
+
     printf("k\tRe[k]\tIm[k]\tABS[k]\n");
-    for (int k = 0; k < ADC_BUF_SIZE; k++)  {                       // вывод результатов
-        printf("%i\t%.5f\t%.5f\t%.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]);
-    }
+        for (int k = 0; k < ADC_BUF_SIZE; k++)  {
+            printf("%d\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]); 
+        }
+
+        // Запись в файл
+
+    char *filename = "spectre.txt";
+    char message[128] = {0};
+    FILE *fp = fopen(filename, "w");
+    sprintf(message, "k\tRe[k]\tIm[k]\tABS[k]\n");
+    fputs(message, fp);
+     for (int k = 0; k < ADC_BUF_SIZE; k++)  {
+            sprintf(message, "%d\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]);
+            fputs(message, fp); 
+        }
 
     return 0;
 }
