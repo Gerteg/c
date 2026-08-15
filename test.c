@@ -10,12 +10,13 @@ int main() {
     float Sum_Re, Sum_Im;                                           // действительная и мнимая часть суммы произведений гарм. функции на буфер АЦП
     float Xk_Re[ADC_BUF_SIZE], Xk_Im[ADC_BUF_SIZE];                 // действительная и мнимая части спектра
     float Abs[ADC_BUF_SIZE];                                        // буфер для хранения результата модуля спектра
+    float Phase[ADC_BUF_SIZE];                                      // буфер для хранения фазы k-й гармоники
 
     for(int i = 0; i < ADC_BUF_SIZE; i++)   {                       // запись тестовой функции для построения спектра
         adc_buf[i] = 
-        sinf(2*Pi*i* 1  /ADC_BUF_SIZE + 45)+
-        sinf(2*Pi*i* 5  /ADC_BUF_SIZE + 30)+
-        sinf(2*Pi*i* 50 /ADC_BUF_SIZE + 128);     
+        sinf(2*Pi*i* 1  /ADC_BUF_SIZE + 45  /180*Pi)+
+        sinf(2*Pi*i* 5  /ADC_BUF_SIZE + 30  /180*Pi)+
+        sinf(2*Pi*i* 50 /ADC_BUF_SIZE + 135 /180*Pi);     
     }
 
     for (int k = 0; k < ADC_BUF_SIZE; k++)  {                       // расчет спектра ДПФ двойным циклом
@@ -26,13 +27,14 @@ int main() {
         Xk_Re[k] = Sum_Re;                                          // запись действительной части спектра в буфер
         Xk_Im[k] = Sum_Im;                                          // запись мнимой части спектра в буфер
         Abs[k] = sqrtf(Xk_Re[k] * Xk_Re[k] + Xk_Im[k] * Xk_Im[k]);  // расчет модуля спектра
+        Phase[k] = atan2f(Xk_Im[k], Xk_Re[k])*180/Pi;                      // расчет фазы спектра
         Sum_Re = 0;
         Sum_Im = 0;
     }
 
     printf("k\tRe[k]\tIm[k]\tABS[k]\n");
-        for (int k = 0; k < ADC_BUF_SIZE; k++)  {
-            printf("%d\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]); 
+        for (int k = 0; k < ((ADC_BUF_SIZE + 1) / 2) - 1; k++)  {
+            printf("%d\t%10.5f\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k], Phase[k]); 
         }
 
         // Запись в файл
@@ -40,10 +42,10 @@ int main() {
     char *filename = "spectre.txt";
     char message[128] = {0};
     FILE *fp = fopen(filename, "w");
-    sprintf(message, "k\tRe[k]\tIm[k]\tABS[k]\n");
+    sprintf(message, "k\tRe[k]\tIm[k]\tABS[k]\tPhase[k]\n");
     fputs(message, fp);
-     for (int k = 0; k < ADC_BUF_SIZE; k++)  {
-            sprintf(message, "%d\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k]);
+     for (int k = 0; k < ((ADC_BUF_SIZE + 1) / 2) - 1; k++)  {
+            sprintf(message, "%d\t%10.5f\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k], Phase[k]);
             fputs(message, fp); 
         }
 
