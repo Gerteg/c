@@ -1,0 +1,253 @@
+{
+  "main": {
+    "id": "5ca0c30c0d7ed917",
+    "type": "split",
+    "children": [
+      {
+        "id": "551be051575c959b",
+        "type": "tabs",
+        "dimension": 73.03299492385787,
+        "children": [
+          {
+            "id": "e9f5a144a5676f93",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Си/Операторы.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Операторы"
+            }
+          },
+          {
+            "id": "3f8c92c0531f6463",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "БПФ Кули-Тьюки.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "БПФ Кули-Тьюки"
+            }
+          }
+        ],
+        "currentTab": 1
+      },
+      {
+        "id": "91a5d703432aa2aa",
+        "type": "tabs",
+        "dimension": 26.967005076142133,
+        "children": [
+          {
+            "id": "a9a6ad9b6d0b50d6",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Граф"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "ed6fc7d3acef442b",
+    "type": "split",
+    "children": [
+      {
+        "id": "2993d61d9620aea8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9caeef772ba0ff2c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Файловый менеджер"
+            }
+          },
+          {
+            "id": "ec291357553e1752",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Поиск"
+            }
+          },
+          {
+            "id": "2010ba92ce3b6f04",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Закладки"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "fa8ef59fc0f9b8fc",
+    "type": "split",
+    "children": [
+      {
+        "id": "5dfaf25dd369559f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "392051d76164a975",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Добро пожаловать.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Обратные ссылки для Добро пожаловать"
+            }
+          },
+          {
+            "id": "42f55d0f04c8352a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Добро пожаловать.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Исходящие ссылки из Добро пожаловать"
+            }
+          },
+          {
+            "id": "1b7bfb2b611db16f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Теги"
+            }
+          },
+          {
+            "id": "12c345391a33d089",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Добро пожаловать.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Структура Добро пожаловать"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Создать новую базу": false,
+      "switcher:Меню быстрого перехода": false,
+      "graph:Граф": false,
+      "canvas:Создать новый холст": false,
+      "daily-notes:Сегодняшняя заметка": false,
+      "templates:Вставить шаблон": false,
+      "command-palette:Открыть палитру команд": false,
+      "obsidian-excalidraw-plugin:Создать новый чертеж": false
+    }
+  },
+  "active": "3f8c92c0531f6463",
+  "lastOpenFiles": [
+    "Без названия.canvas",
+    "Без названия.base",
+    "Работа с многофайловой структурой.png",
+    "БПФ Кули-Тьюки.md",
+    "Преобразование Фурье, алгоритм Кули-Тьюки.canvas",
+    "Си/Операторы.md",
+    "Без названия.md",
+    "Преобразование Фурье, алгоритм Кули-Тьюки.md",
+    "Без названия",
+    "Pasted image 20260510140942.png",
+    "Си",
+    "С++/Рисовалка/Drawing 2026-02-03 12.30.20.excalidraw.md",
+    "С++/Canvas.canvas",
+    "С++/Рисовалка",
+    "С++",
+    "Excalidraw/Drawing 2025-09-21 02.45.30.excalidraw.md",
+    "Pasted Image 20250921024623_002.png",
+    "Pasted Image 20250921024812_225.png",
+    "С++/Рисовалка",
+    "ываыва.md",
+    "The Escapists 1(2).md",
+    "Саморазвитие/Изучение Титце/Excalidraw/Drawing 2025-03-15 13.07.19.excalidraw.md",
+    "Саморазвитие/Изучение Титце/Изучение Титце и Хилла.md",
+    "Саморазвитие/Изучение Титце/Excalidraw",
+    "Саморазвитие/Изучение Титце/Принцип работы повышайки.canvas",
+    "Саморазвитие/Разработка эффектора/Excalidraw/TL431 (расчеты).md",
+    "Excalidraw/Drawing 2025-03-13 12.00.02.excalidraw.md",
+    "Учебное/НИР/Написание НИР.md",
+    "Учебное/НИР/Drawing 2025-03-12 00.20.46.excalidraw.md",
+    "Учебное/НИР/Экспериментальная часть НИР.md",
+    "Учебное/НИР/Написание структуры НИР.md",
+    "Саморазвитие/Разработка эффектора/Разработка эффектора.md",
+    "Саморазвитие/Разработка эффектора/Excalidraw/Схема (идеи).md",
+    "Саморазвитие/Изучение Титце/Источник тока Хауленда.md",
+    "Учебное/Базовая учеба (обязанности).md",
+    "Учебное/Семестр/Рассуждалки.md",
+    "Учебное/Семестр/РГР Вохминцев.md",
+    "Саморазвитие/Саморазвитие.md",
+    "Саморазвитие/Разработка эффектора/Excalidraw",
+    "Саморазвитие/Разработка эффектора/Расчетики.canvas",
+    "Саморазвитие/Разработка эффектора/Эксперимент с сопротивлением МОП-транзистора.md",
+    "Саморазвитие/Разработка эффектора",
+    "Саморазвитие/Изучение Титце",
+    "Саморазвитие/Без названия 1.md"
+  ]
+}

@@ -1,7 +1,53 @@
 #include <stdio.h>   // для sprintf и puts
+#include <stdint.h>
+#include <math.h>
+//#include "complex.h"
+#define ADC_BUF_SIZE 4095
+#define Pi  3.1415926535
+int main() {  
 
-int main() {
-    char buf[16];
-    sprintf(buf, "Hello"); // запись строки в буфер
+    float adc_buf[ADC_BUF_SIZE];                                    // буфер входный значений
+    float Sum_Re, Sum_Im;                                           // действительная и мнимая часть суммы произведений гарм. функции на буфер АЦП
+    float Xk_Re[ADC_BUF_SIZE], Xk_Im[ADC_BUF_SIZE];                 // действительная и мнимая части спектра
+    float Abs[ADC_BUF_SIZE];                                        // буфер для хранения результата модуля спектра
+    float Phase[ADC_BUF_SIZE];                                      // буфер для хранения фазы k-й гармоники
+
+    for(int i = 0; i < ADC_BUF_SIZE; i++)   {                       // запись тестовой функции для построения спектра
+        adc_buf[i] = 
+        sinf(2*Pi*i* 1  /ADC_BUF_SIZE + 45  /180*Pi)+
+        sinf(2*Pi*i* 5  /ADC_BUF_SIZE + 30  /180*Pi)+
+        sinf(2*Pi*i* 50 /ADC_BUF_SIZE + 135 /180*Pi);     
+    }
+
+    for (int k = 0; k < ADC_BUF_SIZE; k++)  {                       // расчет спектра ДПФ двойным циклом
+        for (int n = 0; n < ADC_BUF_SIZE; n++)  {
+            Sum_Re += adc_buf[n]*cosf(2*Pi*k*n/ADC_BUF_SIZE);       // рассчет суммы действительной части всех отсчетов для данного k
+            Sum_Im += adc_buf[n]*sinf(2*Pi*k*n/ADC_BUF_SIZE);       // рассчет суммы мнимой части всех отсчетов для данного k
+        }
+        Xk_Re[k] = Sum_Re;                                          // запись действительной части спектра в буфер
+        Xk_Im[k] = Sum_Im;                                          // запись мнимой части спектра в буфер
+        Abs[k] = sqrtf(Xk_Re[k] * Xk_Re[k] + Xk_Im[k] * Xk_Im[k]);  // расчет модуля спектра
+        Phase[k] = atan2f(Xk_Im[k], Xk_Re[k])*180/Pi;                      // расчет фазы спектра
+        Sum_Re = 0;
+        Sum_Im = 0;
+    }
+
+    printf("k\tRe[k]\tIm[k]\tABS[k]\n");
+        for (int k = 0; k < ((ADC_BUF_SIZE + 1) / 2) - 1; k++)  {
+            printf("%d\t%10.5f\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k], Phase[k]); 
+        }
+
+        // Запись в файл
+
+    char *filename = "spectre.txt";
+    char message[128] = {0};
+    FILE *fp = fopen(filename, "w");
+    sprintf(message, "k\tRe[k]\tIm[k]\tABS[k]\tPhase[k]\n");
+    fputs(message, fp);
+     for (int k = 0; k < ((ADC_BUF_SIZE + 1) / 2) - 1; k++)  {
+            sprintf(message, "%d\t%10.5f\t%10.5f\t%10.5f\t%10.5f\n", k, Xk_Re[k], Xk_Im[k], Abs[k], Phase[k]);
+            fputs(message, fp); 
+        }
+
     return 0;
 }
